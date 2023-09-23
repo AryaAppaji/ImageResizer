@@ -46,7 +46,7 @@ form label{
     width: 160px;
     font-weight: 400;
 }
-form p{
+.px{
     font-weight: 400;
     display: inline-block;
 }
@@ -86,4 +86,9 @@ form input[type="submit"]{
     position: absolute;
     transform: translate(200%,-80%);
     box-shadow: 5px 5px 10px grey;
+}
+
+.error1,.error2,.error3{
+    display: block;
+    color: red
 }
