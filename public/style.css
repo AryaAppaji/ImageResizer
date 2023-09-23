@@ -22,13 +22,14 @@ p{
 }
 
 form{
-    height: 250;
-    width: 300;
+    height: 250px;
+    width: 300px;
     box-shadow: 5px 5px 10px grey;
     background-color: white;
     padding: 30px;
     border-radius: 15px;
     transform: translateX(14px);
+    overflow-y: auto;
 }
 
 ::file-selector-button{
@@ -91,4 +92,14 @@ form input[type="submit"]{
 .error1,.error2,.error3{
     display: block;
     color: red;
+}
+
+::-webkit-scrollbar{
+    border-radius: 15px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 15px;
+    background-color: black;
 }
