@@ -22,7 +22,7 @@ p{
 }
 
 form{
-    height: 250px;
+    height: 230px;
     width: 300px;
     box-shadow: 5px 5px 10px grey;
     background-color: white;
@@ -58,6 +58,7 @@ form input[type="number"]{
     border-radius: 10px;
     box-shadow: 5px 5px 10px inset grey;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 70px;
 }
 ::-webkit-inner-spin-button,::-webkit-outer-spin-button{
     display: none;
@@ -85,7 +86,7 @@ form input[type="submit"]{
     width: 75px;
     z-index: 1;
     position: absolute;
-    transform: translate(200%,-80%);
+    transform: translate(210%,-110%);
     box-shadow: 5px 5px 10px grey;
 }
 
