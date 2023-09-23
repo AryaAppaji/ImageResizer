@@ -90,5 +90,5 @@ form input[type="submit"]{
 
 .error1,.error2,.error3{
     display: block;
-    color: red
+    color: red;
 }
