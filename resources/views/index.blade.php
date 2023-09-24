@@ -36,7 +36,7 @@
                 <p class="error3">{{$message}}</p>
             @enderror
         <center>
-                <input type="submit" value="Download Resized Image" title="Click here to download the resized image">
+                <input type="submit" value="Upload Image" title="Click here to upload the image">
         </center>
     </form>
 </body>

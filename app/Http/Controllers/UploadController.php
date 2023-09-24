@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 class UploadController extends Controller
 {
     public function upload(Request $request){
@@ -18,7 +20,19 @@ class UploadController extends Controller
             "width" => "Please enter width.",
             "height" => "Please enter height.",
         ]);
-        $filename = $request->file("upload")->getClientOriginalName();
-        $request->file("upload")->storeAs("public",$filename);
+
+        $file = $request->file("upload");
+        $filename = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $file->storeAs("public",$filename);
+
+        $width = (int) $request->input("width");
+        $height = (int) $request->input("height");
+
+        $img = Image::make($file)->resize($width, $height);
+
+        $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}.".$extension;
+        Storage::disk("public")->put($newName,$img->encode($extension));
+        Storage::disk("public")->delete($filename);
     }
 }
