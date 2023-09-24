@@ -14,8 +14,9 @@ class UploadController extends Controller
         ],
         [
             "upload.required" => "Please select a file.",
-            "width" => "Please enter a value.",
-            "height" => "Please enter a value.",
+            "upload.mimes" => "The uploaded must be either jpg,jpeg,png,avif,gif,webp types",
+            "width" => "Please enter width.",
+            "height" => "Please enter height.",
         ]);
         $filename = $request->file("upload")->getClientOriginalName();
         $request->file("upload")->storeAs("public",$filename);
