@@ -22,7 +22,3 @@ use Illuminate\Support\Facades\Route;
 Route::view("/","index");
 
 Route::post("/",[UploadController::class,"upload"])->name("uploadfile");
-
-Route::view("/getFile","download")->name("download");
-
-Route::get("/getFile",[DownloadController::class,"downloadFile"])->name("downloadfile");
