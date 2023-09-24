@@ -6,6 +6,8 @@ use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Psy\VersionUpdater\Downloader;
+
 class UploadController extends Controller
 {
     public function upload(Request $request){
@@ -34,5 +36,7 @@ class UploadController extends Controller
         $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}.".$extension;
         Storage::disk("public")->put($newName,$img->encode($extension));
         Storage::disk("public")->delete($filename);
+
+        return back();
     }
 }
