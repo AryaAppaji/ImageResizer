@@ -11,6 +11,7 @@ use Psy\VersionUpdater\Downloader;
 class UploadController extends Controller
 {
     public function upload(Request $request){
+        session()->start();
         $request->validate([
             "upload" => ["required","mimes:jpg,jpeg,png,avif,gif,webp"],
             "width" => ["required"],
@@ -36,7 +37,7 @@ class UploadController extends Controller
         $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}.".$extension;
         Storage::disk("public")->put($newName,$img->encode($extension));
         Storage::disk("public")->delete($filename);
-
-        return back();
+        session()->put("FileName", $newName);
+        return back()->with(["filename"=>$newName]);
     }
 }
