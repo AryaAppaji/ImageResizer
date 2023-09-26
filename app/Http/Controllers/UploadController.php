@@ -26,7 +26,6 @@ class UploadController extends Controller
 
         $file = $request->file("upload");
         $filename = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
         $file->storeAs("public",$filename);
 
         $width = (int) $request->input("width");
@@ -34,8 +33,8 @@ class UploadController extends Controller
 
         $img = Image::make($file)->resize($width, $height);
 
-        $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}.".$extension;
-        Storage::disk("public")->put($newName,$img->encode($extension));
+        $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}."."png";
+        Storage::disk("public")->put($newName,$img->encode("png"));
         Storage::disk("public")->delete($filename);
         session()->put("FileName", $newName);
         return back()->with(["filename"=>$newName]);
