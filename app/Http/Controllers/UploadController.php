@@ -37,6 +37,6 @@ class UploadController extends Controller
         Storage::disk("public")->put($newName,$img->encode("png"));
         Storage::disk("public")->delete($filename);
         session()->put("FileName", $newName);
-        return back()->with(["filename"=>$newName]);
+        return back()->with(["filename"=>"uploaded"]);
     }
 }
