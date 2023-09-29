@@ -36,7 +36,6 @@ class UploadController extends Controller
         $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}."."png";
         Storage::disk("public")->put($newName,$img->encode("png"));
         Storage::disk("public")->delete($filename);
-        session()->put("FileName", $newName);
         return back()->with(["filename"=>"uploaded"]);
     }
 }
