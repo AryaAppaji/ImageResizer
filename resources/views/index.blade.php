@@ -6,8 +6,7 @@
     <meta name="description" content="This is a hobby project designed using laravel">
     <title>Image Resizer</title>
     <link rel="shortcut icon" href="{{asset("camera lens.png")}}" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="{{asset('style.css')}}">
 </head>
 <body>
 
