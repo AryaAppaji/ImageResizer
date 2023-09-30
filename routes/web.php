@@ -23,4 +23,7 @@ Route::view("/","index");
 
 Route::post("/upload",[UploadController::class,"upload"])->name("uploadfile");
 
-Route::post("/",[DownloadController::class,"dn"])->name("dn");
+Route::get("/download",function(){
+    return view("download");
+});
+Route::get("/download",[DownloadController::class,"downloadFile"])->name("dn");
