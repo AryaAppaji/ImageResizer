@@ -22,7 +22,14 @@ class UploadController extends Controller
             "height" => "Please enter height.",
         ]);
         $files = Storage::disk("public")->allFiles();
-        Storage::disk("public")->delete($files);
+        foreach($files as $f){
+            if($f==".gitignore"){
+                continue;
+            }
+            else{
+                Storage::disk("public")->delete($f);
+            }
+        }
         $file = $request->file("upload");
         $filename = $file->getClientOriginalName();
         $file->storeAs("public",$filename);
