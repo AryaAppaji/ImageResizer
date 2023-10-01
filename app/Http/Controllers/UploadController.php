@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use Psy\VersionUpdater\Downloader;
 
 class UploadController extends Controller
 {
@@ -23,7 +21,8 @@ class UploadController extends Controller
             "width" => "Please enter width.",
             "height" => "Please enter height.",
         ]);
-
+        $files = Storage::disk("public")->allFiles();
+        Storage::disk("public")->delete($files);
         $file = $request->file("upload");
         $filename = $file->getClientOriginalName();
         $file->storeAs("public",$filename);
