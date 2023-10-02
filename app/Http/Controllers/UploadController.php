@@ -9,7 +9,6 @@ use Intervention\Image\Facades\Image;
 class UploadController extends Controller
 {
     public function upload(Request $request){
-        session()->start();
         $request->validate([
             "upload" => ["required","mimes:jpg,jpeg,png,avif,gif,webp"],
             "width" => ["required"],
@@ -39,7 +38,8 @@ class UploadController extends Controller
 
         $img = Image::make($file)->resize($width, $height);
 
-        $newName = pathinfo($filename,PATHINFO_FILENAME)."_{$width}x{$height}."."png";
+        $newName = explode(".",$filename);
+        $newName = $newName[0]."_{$width}x{$height}.png";
         Storage::disk("public")->put($newName,$img->encode("png"));
         Storage::disk("public")->delete($filename);
         return redirect()->route("dn")->with(["file"=> $newName]);
