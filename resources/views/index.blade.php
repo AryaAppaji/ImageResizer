@@ -17,24 +17,30 @@
 
     <form action="{{route("uploadfile")}}" method="post" enctype="multipart/form-data">
         @csrf
-            <input type="file" name="upload" id=""><br><br>
+            <input type="file" name="upload" id=""><br>
             @error("upload")
-                <p class="error1">{{$message}}</p>
+                <span class="error1">{{$message}}</span>
             @enderror
+            <br>
+
 
 
             <label for="width">Enter Width in pixels</label>
-            <input type="number" name="width" id=""><p class="px">&nbsp;px</p><br><br>
+            <input type="number" name="width" id=""><p class="px">&nbsp;px</p><br>
             @error("width")
-                <p class="error2">{{$message}}</p>
+                <span class="error2">{{$message}}</span>
             @enderror
+            <br>
+
 
 
             <label for="height">Enter Height in pixels</label>
-            <input type="number" name="height" id=""><p class="px">&nbsp;px</p><br><br>
+            <input type="number" name="height" id=""><p class="px">&nbsp;px</p><br>
             @error("height")
-                <p class="error3">{{$message}}</p>
+                <span class="error3">{{$message}}</span>
             @enderror
+            <br>
+
         <center>
                 <input type="submit" value="Upload Image" title="Click here to upload the image">
         </center>
